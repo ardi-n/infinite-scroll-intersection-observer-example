@@ -3,7 +3,12 @@ Discount Ascii Warehouse
 
 This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ・∀・)ノ` and `¯_(ツ)_/¯`, in a wide variety of font sizes. The homepage should display a list of products for people to browse.
 
-Please read the instructions and FAQ below before beginning.
+The webapp is implemented with the help of [Backbone.js](http://backbonejs.org) and [Marionette.js](http://marionettejs.org) and laid out thanks to [Bootstrap](https://getbootstrap.com).
+
+The goal of this simple example is to showcase the usage of [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+together with a front-end framework in infinite-scrolling list scenario.
+
+Feel free to browse the docs [here](http://htmlpreview.github.io/?https://github.com/ardi-n/infinite-scroll-intersection-observer-example/blob/master/docs/index.html).
 
 Features
 ----
@@ -41,30 +46,5 @@ FAQ
 
 Start with `npm start`. The server will look for any files you add to the `static/` directory.
 
-### Can I use {{ module_x }}?
 
-Yes, that's fine.
-
-### What about sort order (ascending / descending)?
-
-We don't need to worry about alternate sort order for this project, we'll just use ascending-order for everything.
-
-### Can I make changes to the backend or API?
-
-No, your final solution should not include any changes to the server code.
-
-### What should I do when I'm finished?
-
-Please zip up your files and email them back, along with information about which features you have included in your solution.
-
-### How is the exam graded?
-
-We are looking for idiomatic use of javascript, and the ability to solve the problems with code that is clean and easy to read. Even though it's very small in scope, please show us how you would use the language and conventions to structure things in a clear and maintainable way.
-
-Don't worry about visual aspects, ugly is fine :) Unless you would like to show us your UI skills, in which case, feel free :)
-
-### This looks like it will take a while and I'm pretty busy
-
-You're right! With something open-ended like this you could easily spend a week polishing and getting it just right. We don't expect you to do this, and we'll do our best to make sure you're not disadvantaged by this.
-
-When we grade this exam we're not giving you a "score out of 100" for how many features you complete. We're trying to get some insight into your process, to see the way you work. So, by all means, spend more time if you want to. But you are also free to leave certain features out and give a written explanation of how you would approach it. The best approach is to spend your time on the features that you think is the best way to show us your strengths and experience.
+The author of this repo is also the founder of [Livewallpaper.io](https://www.livewallpaper.io), the best place to find awesome phone wallpapers for Android.
