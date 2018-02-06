@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/GridView.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/GridView.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module */
+import "intersection-observer";
+import Mn from "marionette";
+import "../styles/grid.less!";
+import ItemView from "./ItemView";
+import AdView from "./AdView";
+import LoaderView from "./LoaderView";
+import EndView from "./EndView";
+
+function filterMethod(childModel) {
+    return !childModel.get("prefetched");
+}
+
+/**
+ * @class
+ * @classdesc View class that is responsible for rendering {@link GridCollection}.
+ */
+export default Mn.CollectionView.extend({
+
+    /**
+     * Based on some logic, decide what view class to return for a child model.
+     * @param {Backbone.Model} childModel
+     * @returns {AdView|EndView|ItemView}
+     */
+    childView(childModel) {
+        if (childModel.get("isad")) {
+            return AdView;
+        }
+        else if (childModel.get("isend")) {
+            return EndView;
+        }
+        else {
+            return ItemView;
+        }
+    },
+
+    collectionEvents: {
+        sync: "onCollectionSync"
+    },
+
+    initialize() {
+        this.intersectionObserver = new IntersectionObserver(entries => this.processIntersection(entries));
+        this.observedEl = null;
+        this.resetDefaultFilter();
+    },
+
+    onDestroy() {
+        this.intersectionObserver.disconnect();
+    },
+    /**
+     * @listens GridCollection#sync
+     */
+    onCollectionSync() {
+        this.resetIntersectionTarget();
+    },
+
+    resetDefaultFilter() {
+        this.removeFilter();
+        this.setFilter(filterMethod);
+        this.resetIntersectionTarget();
+    },
+
+    resetIntersectionTarget() {
+        this.observedEl &amp;&amp; this.intersectionObserver.unobserve(this.observedEl);
+        const lastView = this.children.last();
+        if (lastView) {
+            this.observedEl = lastView.el;
+            this.intersectionObserver.observe(this.observedEl);
+        }
+    },
+
+    showLoaderView() {
+        let lastView = this.children.last();
+        // if it is already shown do nothing
+        if (lastView &amp;&amp; lastView instanceof LoaderView) return;
+        lastView = new LoaderView();
+        // append loader view to the end of grid
+        this.addChildView(lastView, this.children.length);
+        // before first model from a new batch is rendered, remove loader view
+        this.once("before:add:child", () => this.removeChildView(lastView));
+    },
+    /**
+     * @fires GridView#last-item-visible
+     * @param {IntersectionObserverEntry[]} entries
+     */
+    processIntersection(entries) {
+        const lastItemVisible = 
+            !! entries
+            // check if last product item has been intersected
+            .filter(entry => entry.intersectionRatio > 0)
+            // if so, display next batch of products
+            .length;
+
+        if (lastItemVisible) {
+            this.observedEl &amp;&amp; this.intersectionObserver.unobserve(this.observedEl);
+            this.trigger("last-item-visible");
+        }
+    }
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Grid_GridManager.html">Grid/GridManager</a></li><li><a href="module-Grid_models_GridCollection.html">Grid/models/GridCollection</a></li><li><a href="module-Grid_models_GridModel.html">Grid/models/GridModel</a></li><li><a href="module-Grid_views_AdView.html">Grid/views/AdView</a></li><li><a href="module-Grid_views_EndView.html">Grid/views/EndView</a></li><li><a href="module-Grid_views_GridView.html">Grid/views/GridView</a></li><li><a href="module-Grid_views_ItemView.html">Grid/views/ItemView</a></li><li><a href="module-Grid_views_LoaderView.html">Grid/views/LoaderView</a></li><li><a href="module-Grid_views_SorterView.html">Grid/views/SorterView</a></li></ul><h3>Classes</h3><ul><li><a href="module-Grid_GridManager.html">Grid/GridManager</a></li><li><a href="module-Grid_models_GridCollection.html">Grid/models/GridCollection</a></li><li><a href="module-Grid_models_GridModel.html">Grid/models/GridModel</a></li><li><a href="module-Grid_views_AdView.html">Grid/views/AdView</a></li><li><a href="module-Grid_views_EndView.html">Grid/views/EndView</a></li><li><a href="module-Grid_views_GridView.html">Grid/views/GridView</a></li><li><a href="module-Grid_views_ItemView.html">Grid/views/ItemView</a></li><li><a href="module-Grid_views_LoaderView.html">Grid/views/LoaderView</a></li><li><a href="module-Grid_views_SorterView.html">Grid/views/SorterView</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Dec 13 2016 15:05:48 GMT+0100 (Środkowoeuropejski czas stand.)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

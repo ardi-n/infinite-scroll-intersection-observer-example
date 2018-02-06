@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Discount Ascii Warehouse</title>
+    </head>
+    <body class="container-fluid">
+        <header>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-9">
+                    <div class="jumbotron">
+                        <h1>Discount Ascii Warehouse</h1>
+
+                    <p>Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="thumbnail">
+                        <p class="text-muted">But first, a word from our sponsors:</p> <script>document.write('<img class="ad img-responsive" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">  
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <select id="daw-grid-sort" class="form-control">
+                    <option>Sort by:</option>
+                    <option value="id">ID</option>
+                    <option value="price">Price</option>
+                    <option value="size">Size</option>
+                </select>
+            </div>
+        </div>
+        <section class="products row">
+            
+        </section>
+        <script src="jspm_packages/system.js"></script>
+        <script src="config.js"></script>
+        <script>
+            System.import("app/init");
+        </script>
+    </body>
+</html>

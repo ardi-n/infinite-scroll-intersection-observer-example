@@ -1,0 +1,43 @@
+{
+  "name": "discount-ascii-warehouse",
+  "private": true,
+  "version": "0.2.0",
+  "description": "For all your ascii needs.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "cool-ascii-faces": "^1.3.4",
+    "ecstatic": "^1.4.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.4.3",
+    "jspm": "^0.16.48"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "static"
+    },
+    "dependencies": {
+      "backbone": "github:jashkenas/backbone@^1.3.3",
+      "backbone.radio": "github:marionettejs/backbone.radio@^1.0.2",
+      "bootstrap-less": "github:distros/bootstrap-less@3.3.9",
+      "intersection-observer": "npm:intersection-observer@^0.1.1",
+      "jquery": "github:components/jquery@^3.1.1",
+      "jst": "github:podio/plugin-jst@0.1.2",
+      "less": "github:huasofoundries/systemjs-less-plugin@1.8.1",
+      "marionette": "github:marionettejs/backbone.marionette@^3.1.0",
+      "text-spinners": "npm:text-spinners@^1.0.5",
+      "underscore": "github:jashkenas/underscore@^1.8.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
