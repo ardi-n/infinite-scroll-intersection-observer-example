@@ -47,4 +47,15 @@ FAQ
 Start with `npm start`. The server will look for any files you add to the `static/` directory.
 
 
-The author of this repo is also the founder of [Livewallpaper.io](https://www.livewallpaper.io), the best place to find awesome phone wallpapers for Android.
+## About the author
+
+My name is Adrian Nowicki. You can contact me through 
+[LinkedIn](https://www.linkedin.com/in/adriannowicki/)
+and [Twitter](https://twitter.com/MeNowicki). 
+Some of my work is published on [Github](https://github.com/ardi-n).
+
+By the way, I'm the founder of 
+[Livewallpaper.io](https://www.livewallpaper.io),
+a place for awesome Android phone wallpapers. If you wonder how to turn
+a gif or an mp4 into a live wallpaper, 
+you can find the answer [here](https://www.livewallpaper.io/how-it-works).
